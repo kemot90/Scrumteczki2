@@ -32,3 +32,5 @@ local.properties
 *.ipr
 *~
 *.swp
+/.idea/workspace.xml
+.DS_Store
