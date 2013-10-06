@@ -3,17 +3,19 @@ package pl.kemot.scrum.scrumteczki2;
 /**
  * Created by Tomek on 05.10.13.
  */
-public class Estimate {
+public class Estimate implements Comparable<Estimate> {
     /** Etykieta estymaty. */
     private final String label;
     /** Estymowany czas trwania w godzinach. */
-    private final int estimateTimeInHours;
+    private final Integer estimateTimeInMinutes;
     /** Stała określająca liczbę godzin w dobie. */
     private static final int HOURS_IN_DAY = 24;
+    /** Stała określająca ilość minut w godzinie */
+    private static final int MINUTES_IN_HOUR = 60;
 
-    private Estimate(String label, int estimateTimeInHours) {
+    private Estimate(String label, Integer estimateTimeInMinutes) {
         this.label = label;
-        this.estimateTimeInHours = estimateTimeInHours;
+        this.estimateTimeInMinutes = estimateTimeInMinutes;
     }
 
     /**
@@ -21,9 +23,10 @@ public class Estimate {
      * @param hours Estymowany czas w godzinach.
      * @return Estymata w godzinach.
      */
-    public static Estimate createInstanceByHours(int hours) {
-        String label = String.valueOf(hours);
-        return new Estimate(label, hours);
+    public static Estimate createInstanceByHours(Float hours) {
+        Integer durationTimeInMinutes = Float.floatToIntBits(hours * Float.intBitsToFloat(MINUTES_IN_HOUR));
+        String label = StringUtils.readableFormat(hours);
+        return new Estimate(label, durationTimeInMinutes);
     }
 
     /**
@@ -33,8 +36,8 @@ public class Estimate {
      */
     public static Estimate createInstanceByDays(short days) {
         String label = String.valueOf(days) + "d";
-        int durationTimeInHours = days * HOURS_IN_DAY;
-        return new Estimate(label, durationTimeInHours);
+        Integer durationTimeInMinutes = days * HOURS_IN_DAY * MINUTES_IN_HOUR;
+        return new Estimate(label, durationTimeInMinutes);
     }
 
     /**
@@ -45,9 +48,14 @@ public class Estimate {
     }
 
     /**
-     * @return Wartość estymaty w godzinach.
+     * @return Wartość estymaty w minutach.
      */
-    public int getEstimateTimeInHours() {
-        return estimateTimeInHours;
+    public Integer getEstimateTimeInMinutes() {
+        return estimateTimeInMinutes;
+    }
+
+    @Override
+    public int compareTo(Estimate another) {
+        return estimateTimeInMinutes.compareTo(another.estimateTimeInMinutes);
     }
 }
