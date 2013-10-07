@@ -15,6 +15,14 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:spinnerItemStyle">@style/spinnerItemCustomStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/spinnerDropDownItemCustomStyle</item>
+    </style>
+    <style name="spinnerDropDownItemCustomStyle">
+        <item name="android:textColor">#F62</item>
+    </style>
+    <style name="spinnerItemCustomStyle">
+        <item name="android:textColor">#F62</item>
     </style>
 
 </resources>

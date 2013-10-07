@@ -1,6 +1,9 @@
 package pl.kemot.scrum.scrumteczki2;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -28,13 +31,17 @@ public class EstimateAdapter extends ArrayAdapter<Estimate> { //TODO: zrobić ko
         return labelText;
     }
 
-    @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        TextView labelText = new TextView(context);
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.spinner_item, parent, false);
+        }
+
+        TextView labelText = (TextView) convertView.findViewById(R.id.spinner_item_text);
         String label = estimates[position].getLabel();
         labelText.setText(label);
 
-        return labelText;
+        return convertView;
     }
 
     @Override

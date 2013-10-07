@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
         estimatesList.add(Estimate.createInstanceByHours(2f));
         estimatesList.add(Estimate.createInstanceByHours(1f));
         estimatesList.add(Estimate.createInstanceByDays((short) 3));
+        estimatesList.add(Estimate.createInstanceInfinity());
 
         Estimate[] estimates = (Estimate[]) Array.newInstance(Estimate.class, estimatesList.size());
         for (int i = 0; i < estimatesList.size(); i++) {
