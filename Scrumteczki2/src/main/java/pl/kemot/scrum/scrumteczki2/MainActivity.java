@@ -3,36 +3,44 @@ package pl.kemot.scrum.scrumteczki2;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.kemot.scrum.scrumteczki2.model.StandardEstimatesModel;
+
 public class MainActivity extends Activity {
+
+    private TextView optimistic;
+    private TextView pessimistic;
+    private Spinner leftEstimate;
+    private Spinner rightEstimate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        List<Estimate> estimatesList = new LinkedList<Estimate>();
-        estimatesList.add(Estimate.createInstanceByHours(0f));
-        estimatesList.add(Estimate.createInstanceByHours(0.5f));
-        estimatesList.add(Estimate.createInstanceByHours(2f));
-        estimatesList.add(Estimate.createInstanceByHours(1f));
-        estimatesList.add(Estimate.createInstanceByDays((short) 3));
-        estimatesList.add(Estimate.createInstanceInfinity());
 
-        Estimate[] estimates = (Estimate[]) Array.newInstance(Estimate.class, estimatesList.size());
-        for (int i = 0; i < estimatesList.size(); i++) {
-            estimates[i] = estimatesList.get(i);
-        }
+        EstimateAdapter estimateAdapter = new EstimateAdapter(
+                MainActivity.this,
+                R.layout.main,
+                StandardEstimatesModel.getEstimates());
 
-        EstimateAdapter estimateAdapter = new EstimateAdapter(MainActivity.this, R.layout.main, estimates);
-        estimateAdapter.sort(new EstimateComparator());
+        leftEstimate = (Spinner) findViewById(R.id.estimateLeft);
+        rightEstimate = (Spinner) findViewById(R.id.estimateRight);
+        optimistic = (TextView) findViewById(R.id.optimistic);
+        pessimistic = (TextView) findViewById(R.id.pessimistic);
 
-        Spinner estimateLeft = (Spinner) findViewById(R.id.estimateLeft);
-        estimateLeft.setAdapter(estimateAdapter);
+        leftEstimate.setAdapter(estimateAdapter);
+        rightEstimate.setAdapter(estimateAdapter);
+
+        leftEstimate.setOnItemSelectedListener(getSelectEvent());
+        rightEstimate.setOnItemSelectedListener(getSelectEvent());
     }
 
     @Override
@@ -40,5 +48,36 @@ public class MainActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    private AdapterView.OnItemSelectedListener getSelectEvent() {
+        return new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                try {
+                    TextView optimistic = (TextView) findViewById(R.id.optimistic);
+                    TextView pessimistic = (TextView) findViewById(R.id.pessimistic);
+
+                    final Spinner leftSpinner = (Spinner) findViewById(R.id.estimateLeft);
+                    final Spinner rightSpinner = (Spinner) findViewById(R.id.estimateRight);
+
+                    Estimate leftEstimate = (Estimate) leftSpinner.getSelectedItem();
+                    Estimate rightEstimate = (Estimate) rightSpinner.getSelectedItem();
+
+                    if (leftEstimate.getEstimateTimeInMinutes() > rightEstimate.getEstimateTimeInMinutes()) {
+                        optimistic.setText(rightEstimate.getLabel());
+                        pessimistic.setText(leftEstimate.getLabel());
+                    } else {
+                        optimistic.setText(leftEstimate.getLabel());
+                        pessimistic.setText(rightEstimate.getLabel());
+                    }
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapter) {  }
+        };
     }
 }

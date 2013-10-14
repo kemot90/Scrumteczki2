@@ -24,5 +24,14 @@
     <style name="spinnerItemCustomStyle">
         <item name="android:textColor">#F62</item>
     </style>
+    <style name="bigChitText">
+        <item name="android:textSize">130sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
 
 </resources>
