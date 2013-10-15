@@ -1,5 +1,6 @@
 package pl.kemot.scrum.scrumteczki2;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -20,6 +21,7 @@ public class MainActivity extends Activity {
     private TextView pessimistic;
     private Spinner leftEstimate;
     private Spinner rightEstimate;
+    public static AlertDialog estimateDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,15 @@ public class MainActivity extends Activity {
 
         leftEstimate.setOnItemSelectedListener(getSelectEvent());
         rightEstimate.setOnItemSelectedListener(getSelectEvent());
+
+        Spinner estimateSpinner = new Spinner(MainActivity.this);
+        estimateSpinner.setAdapter(estimateAdapter);
+        estimateSpinner.setOnItemSelectedListener(getSelectEvent());
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        estimateDialog = dialogBuilder.setView(estimateSpinner).create();
+
+        optimistic.setOnClickListener(createEstimateClickEvent());
     }
 
     @Override
@@ -78,6 +89,15 @@ public class MainActivity extends Activity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapter) {  }
+        };
+    }
+
+    private AdapterView.OnClickListener createEstimateClickEvent() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.estimateDialog.show();
+            }
         };
     }
 }
