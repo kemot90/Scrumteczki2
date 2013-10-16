@@ -1,11 +1,17 @@
 package pl.kemot.scrum.scrumteczki2;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.Layout;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -21,7 +27,6 @@ public class MainActivity extends Activity {
     private TextView pessimistic;
     private Spinner leftEstimate;
     private Spinner rightEstimate;
-    public static AlertDialog estimateDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +52,6 @@ public class MainActivity extends Activity {
         Spinner estimateSpinner = new Spinner(MainActivity.this);
         estimateSpinner.setAdapter(estimateAdapter);
         estimateSpinner.setOnItemSelectedListener(getSelectEvent());
-
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
-        estimateDialog = dialogBuilder.setView(estimateSpinner).create();
 
         optimistic.setOnClickListener(createEstimateClickEvent());
     }
@@ -96,7 +98,7 @@ public class MainActivity extends Activity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.estimateDialog.show();
+                new EstimateDialogFragment(MainActivity.this).show(getFragmentManager(), "MyDialog");
             }
         };
     }
