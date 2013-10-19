@@ -8,6 +8,7 @@ import android.content.Context;
  */
 public class ScrumteczkiApp extends Application {
     private static Context context;
+    private Integer dialogValue = -1;
 
     public void onCreate(){
         super.onCreate();
@@ -19,5 +20,13 @@ public class ScrumteczkiApp extends Application {
      */
     public static Context getAppContext() {
         return context;
+    }
+
+    public Integer getDialogValue() {
+        return dialogValue;
+    }
+
+    public void setDialogValue(Integer value) {
+        dialogValue = value;
     }
 }
