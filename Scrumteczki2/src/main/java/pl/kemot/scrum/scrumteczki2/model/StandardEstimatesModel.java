@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import pl.kemot.scrum.scrumteczki2.Estimate;
 import pl.kemot.scrum.scrumteczki2.EstimateComparator;
 
 /**

@@ -1,59 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Spinner
-                android:id="@+id/estimateLeft"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-            <Spinner
-                android:id="@+id/estimateRight"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/smile"
-                android:text="@string/smiley"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/unknow"
-                android:text="\?"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-    </TableLayout>
-    <TextView
-        android:id="@+id/optimistic"
-        android:text="..."
-        style="@style/bigChitText"
-        android:background="@drawable/karteczka"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1" />
-    <TextView
-        android:id="@+id/pessimistic"
-
-
-        android:text="..."
-        style="@style/bigChitText"
-        android:background="@drawable/karteczka"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1" />
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+        android:layout_margin="10dp">
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:text="Estymacja"
+            style="@style/mainScreenMenuButton"
+            android:onClick="onClickStartEstimateActivity"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/xls"
+            android:text="Daily Scrum"
+            style="@style/mainScreenMenuButton"/>
 </LinearLayout>
