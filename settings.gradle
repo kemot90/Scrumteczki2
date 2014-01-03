@@ -1,1 +1,1 @@
-include ':Scrumteczki2'
+include ':Scrumteczki2', ':AndroidPersistance', ':AndroidPersistance'

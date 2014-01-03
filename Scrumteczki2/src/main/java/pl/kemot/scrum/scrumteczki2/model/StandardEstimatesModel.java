@@ -14,7 +14,7 @@ public class StandardEstimatesModel {
     private static Estimate[] estimates;
     private static boolean isInitialized = false;
     private static void init() {
-        List<Estimate> estimatesList = new LinkedList<Estimate>();
+        List<Estimate> estimatesList = new LinkedList<>();
         estimatesList.add(Estimate.createInstanceByHours(0f));
         estimatesList.add(Estimate.createInstanceByHours(0.5f));
         estimatesList.add(Estimate.createInstanceByHours(1f));

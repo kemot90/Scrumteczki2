@@ -2,7 +2,7 @@ package pl.kemot.scrum.scrumteczki2.model;
 
 import pl.kemot.scrum.scrumteczki2.R;
 import pl.kemot.scrum.scrumteczki2.ScrumteczkiApp;
-import pl.kemot.scrum.scrumteczki2.StringUtils;
+import pl.kemot.scrum.scrumteczki2.utils.StringUtils;
 
 /**
  * Created by Tomek on 05.10.13.

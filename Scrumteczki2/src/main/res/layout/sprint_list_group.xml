@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/sprintChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sprint_chart"/>
+    <TextView
+        android:id="@+id/sprintName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Sprint 15"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/sprintChart"/>
+    <TextView
+        android:id="@+id/sprintAddDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data dodania: "
+        android:layout_below="@+id/sprintName"
+        android:layout_toRightOf="@+id/sprintChart"
+        style="@style/smallLabel"/>
+    <TextView
+        android:id="@+id/sprintAddDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="02.01.2014"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/sprintAddDateLabel"
+        android:layout_alignTop="@+id/sprintAddDateLabel"/>
+    <TextView
+        android:id="@+id/sprintFileNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nazwa pliku: "
+        android:layout_toRightOf="@+id/sprintChart"
+        android:layout_below="@+id/sprintAddDateLabel"
+        style="@style/smallLabel"/>
+    <TextView
+        android:id="@+id/sprintFileName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Sprint 15 - TM - 12.02.2013"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/sprintFileNameLabel"
+        android:layout_alignTop="@+id/sprintFileNameLabel"/>
+</RelativeLayout>

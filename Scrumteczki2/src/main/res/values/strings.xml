@@ -6,4 +6,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="infinity">\u221E</string>
     <string name="smiley">\u263A</string>
+    <string name="estimate">Estymacja</string>
+    <string name="daily_scrum">Zaplanuj Daily Scrum</string>
+    <string name="import_from_excel">Importuj z .xlsx</string>
+    <string name="chooser_label">Wybierz plik</string>
 </resources>

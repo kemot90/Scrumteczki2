@@ -1,4 +1,4 @@
-package pl.kemot.scrum.scrumteczki2;
+package pl.kemot.scrum.scrumteczki2.activity;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -8,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import pl.kemot.scrum.scrumteczki2.R;
+import pl.kemot.scrum.scrumteczki2.adapter.EstimateAdapter;
 import pl.kemot.scrum.scrumteczki2.model.Estimate;
 import pl.kemot.scrum.scrumteczki2.model.StandardEstimatesModel;
 

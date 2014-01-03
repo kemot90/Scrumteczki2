@@ -1,4 +1,4 @@
-package pl.kemot.scrum.scrumteczki2;
+package pl.kemot.scrum.scrumteczki2.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,12 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import pl.kemot.scrum.scrumteczki2.R;
 import pl.kemot.scrum.scrumteczki2.model.Estimate;
 
 /**
  * Created by Tomek on 05.10.13.
  */
-public class EstimateAdapter extends ArrayAdapter<Estimate> { //TODO: zrobić koszerny adapter z Layout Inflaterem
+public class EstimateAdapter extends ArrayAdapter<Estimate> {
     private Estimate[] estimates;
     private Context context;
 

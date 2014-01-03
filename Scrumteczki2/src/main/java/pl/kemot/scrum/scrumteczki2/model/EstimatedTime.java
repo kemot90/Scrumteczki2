@@ -1,6 +1,6 @@
 package pl.kemot.scrum.scrumteczki2.model;
 
-import java.util.regex.Pattern;
+import pl.kemot.scrum.scrumteczki2.utils.StringUtils;
 
 /**
  * Created by Tomek on 22.11.13.
@@ -28,7 +28,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
      */
     public EstimatedTime(String estimatedTime) {
         if (estimatedTime == null) {
-            throw new IllegalArgumentException("Ciag znakow wyrazajacy estymowany czas nie moze byc null!");
+            throw new NullPointerException("Ciag znakow wyrazajacy estymowany czas nie moze byc null!");
         }
         if (!estimatedTime.matches("\\d*:\\d{2}:\\d{2}")) {
             throw new IllegalArgumentException("Estymowany czas jest w zlym formacie! Wartosc: " + estimatedTime);
@@ -38,6 +38,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
         setMinutes(Short.valueOf(timeFragments[1]));
         setSeconds(Short.valueOf(timeFragments[2]));
     }
+
     /**
      * @return liczba sekund dla estymowanego czasu
      */
@@ -103,16 +104,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
 
     @Override
     public String toString() {
-        return hours + ":" + zerofile(minutes) + ":" + zerofile(seconds);
-    }
-
-    /**
-     * Dopełni zerami wartości mniejsze od 10. Np. 0 -> 00, 1 -> 01, 5 -> 05, 11 -> 11.
-     * @param value wartość do wyświetlenia z dopełnieniem zerami
-     * @return łańcuch znaków reprezentujący wartość dopełnioną zerami
-     */
-    private String zerofile(short value) {
-        return String.format("%02d", value);
+        return hours + ":" + StringUtils.zerofill(minutes, 2) + ":" + StringUtils.zerofill(seconds, 2);
     }
 
     /**

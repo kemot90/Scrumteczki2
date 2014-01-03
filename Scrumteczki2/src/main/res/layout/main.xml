@@ -8,14 +8,28 @@
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_launcher"
-            android:text="Estymacja"
+            android:drawableLeft="@drawable/cards"
+            android:text="@string/estimate"
             style="@style/mainScreenMenuButton"
             android:onClick="onClickStartEstimateActivity"/>
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/xls"
-            android:text="Daily Scrum"
+            android:drawableLeft="@drawable/dailyscrum"
+            android:text="@string/daily_scrum"
+            android:onClick="onClickStartSprintListActivity"
             style="@style/mainScreenMenuButton"/>
+    <!-- Sekcja testowa - początek-->
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/dailyscrum"
+            android:text="Wybierz plik (test)"
+            style="@style/mainScreenMenuButton"
+            android:onClick="onClickSelectFile"/>
+    <TextView
+            android:id="@+id/test_output"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+    <!-- Sekcja testowa - koniec-->
 </LinearLayout>
