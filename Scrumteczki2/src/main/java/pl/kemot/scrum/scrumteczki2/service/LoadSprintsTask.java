@@ -2,9 +2,11 @@ package pl.kemot.scrum.scrumteczki2.service;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.List;
 
+import pl.kemot.scrum.scrumteczki2.ScrumteczkiApp;
 import pl.kemot.scrum.scrumteczki2.adapter.SprintListAdapter;
 import pl.kemot.scrum.scrumteczki2.model.Sprint;
 import pl.kemot.scrum.scrumteczki2.persistence.ScrumFacade;
@@ -14,19 +16,21 @@ import pl.kemot.scrum.scrumteczki2.persistence.ScrumFacade;
  */
 public class LoadSprintsTask extends AsyncTask<Void, Void, List<Sprint>> {
     private final Context context;
-    private final SprintListAdapter adapter;
-    public LoadSprintsTask(Context context, SprintListAdapter adapter) {
+    private final ScrumteczkiApp application;
+    public LoadSprintsTask(Context context) {
         this.context = context;
-        this.adapter = adapter;
+        application = (ScrumteczkiApp) context.getApplicationContext();
     }
     @Override
     protected List<Sprint> doInBackground(Void... noArguments) {
+        Log.d("TM", "TASK(doInBackground): Rozpoczęcie pobierania danych o sprintach w tle.");
         final ScrumFacade scrumFacade = new ScrumFacade(context);
         return scrumFacade.loadAllSprintsFromDataBase();
     }
 
     @Override
     protected void onPostExecute(List<Sprint> sprints) {
-        adapter.setGroups(sprints);
+        Log.d("TM", "TASK(onPostExecute): Dodanie wczytanych elementów do listy obserwowalnej.");
+        application.getObservableSprintList().addAll(sprints);
     }
 }

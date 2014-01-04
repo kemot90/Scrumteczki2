@@ -15,6 +15,7 @@ import pl.kemot.scrum.scrumteczki2.model.Sprint;
 import pl.kemot.scrum.scrumteczki2.model.Task;
 import pl.kemot.scrum.scrumteczki2.persistence.ScrumFacade;
 import pl.kemot.scrum.scrumteczki2.service.ExcelTaskListReaderService;
+import pl.kemot.scrum.scrumteczki2.service.LoadSprintsTask;
 
 /**
  * Created by Tomek on 23.11.13.
@@ -27,7 +28,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        scrumFacade = new ScrumFacade(this);
     }
 
     public void onClickStartEstimateActivity(View view) {

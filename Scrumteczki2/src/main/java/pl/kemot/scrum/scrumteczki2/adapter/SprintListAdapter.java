@@ -1,6 +1,7 @@
 package pl.kemot.scrum.scrumteczki2.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,9 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+import pl.kemot.scrum.scrumteczki2.Listener;
 import pl.kemot.scrum.scrumteczki2.R;
+import pl.kemot.scrum.scrumteczki2.ScrumteczkiApp;
 import pl.kemot.scrum.scrumteczki2.model.Sprint;
 import pl.kemot.scrum.scrumteczki2.model.Task;
 import pl.kemot.scrum.scrumteczki2.service.LoadSprintsTask;
@@ -20,8 +23,9 @@ import pl.kemot.scrum.scrumteczki2.service.LoadSprintsTask;
 /**
  * Created by Tomek on 03.01.14.
  */
-public class SprintListAdapter extends BaseExpandableListAdapter {
+public class SprintListAdapter extends BaseExpandableListAdapter implements Listener {
     private Context context;
+    private ScrumteczkiApp application;
     private List<Sprint> sprintList = new LinkedList<>();
 
     public SprintListAdapter(Context context) {
@@ -29,8 +33,8 @@ public class SprintListAdapter extends BaseExpandableListAdapter {
             throw new NullPointerException("Kontekst nie może być null!");
         }
         this.context = context;
-        LoadSprintsTask loadSprintsTask = new LoadSprintsTask(context, this);
-        loadSprintsTask.execute();
+        application = (ScrumteczkiApp) context.getApplicationContext();
+        sprintList = application.getObservableSprintList().getSprintList();
     }
     @Override
     public int getGroupCount() {
@@ -102,8 +106,11 @@ public class SprintListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int i, int i2) {
         return true;
     }
-    public void setGroups(List<Sprint> sprintList) {
-        this.sprintList = sprintList;
+
+    @Override
+    public void update() {
+        Log.d("TM", "ADAPTER(update): lista danych dla widoku listy została uaktualniona.");
+        this.sprintList = application.getObservableSprintList().getSprintList();
         notifyDataSetChanged();
     }
 }

@@ -8,10 +8,13 @@ import android.content.Context;
  */
 public class ScrumteczkiApp extends Application {
     private static Context context;
+    private ObservableSprintList sprintList;
 
     public void onCreate(){
         super.onCreate();
         context = getApplicationContext();
+        sprintList = new ObservableSprintList(this);
+
     }
 
     /**
@@ -19,5 +22,8 @@ public class ScrumteczkiApp extends Application {
      */
     public static Context getAppContext() {
         return context;
+    }
+    public ObservableSprintList getObservableSprintList() {
+        return sprintList;
     }
 }
