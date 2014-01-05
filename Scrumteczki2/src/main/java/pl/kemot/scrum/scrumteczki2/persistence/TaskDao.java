@@ -129,7 +129,7 @@ public class TaskDao implements Dao<Task> {
                 },
                 null,
                 null,
-                TaskTable.TaskColumns.LABEL);
+                null);
         return getTaskFromCursor(cursor);
     }
 

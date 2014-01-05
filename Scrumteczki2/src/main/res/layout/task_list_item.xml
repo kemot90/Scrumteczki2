@@ -8,11 +8,20 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textStyle="bold"
         android:text="1.1.1"/>
+    <TextView
+        android:id="@+id/taskProduct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true"
+        android:layout_weight="0.5"
+        android:text="Produkt"/>
     <TextView
         android:id="@+id/taskEstimatedTime"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textStyle="bold"
         android:text="0:00:00"/>
 </LinearLayout>

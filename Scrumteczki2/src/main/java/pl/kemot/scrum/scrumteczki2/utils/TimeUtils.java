@@ -8,6 +8,8 @@ public class TimeUtils {
     private static final int MILLISECONDS_IN_SECOND = 1000;
     private static final int SECONDS_IN_HOUR = 60 * 60;
     private static final int SECONDS_IN_MINUTE = 60;
+    private static final int SECONDS_IN_DAY = 3600 * 24;
+
     public static long visualBasicTimeToMilliseconds(long windowsTime) {
         return windowsTime + VB_ZERO_TIME;
     }
@@ -23,5 +25,8 @@ public class TimeUtils {
         String seconds = String.valueOf(timeInSeconds % SECONDS_IN_MINUTE);
         return hours + ":" + StringUtils.zerofill(Integer.valueOf(minutes), 2)
                 + ":" + StringUtils.zerofill(Integer.valueOf(seconds), 2);
+    }
+    public static long changeFractionOfDayToSeconds(double numericValue) {
+        return Math.round(numericValue * SECONDS_IN_DAY);
     }
 }

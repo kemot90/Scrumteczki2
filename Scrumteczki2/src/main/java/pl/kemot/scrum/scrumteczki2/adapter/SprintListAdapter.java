@@ -94,9 +94,11 @@ public class SprintListAdapter extends BaseExpandableListAdapter implements List
             convertView = inflater.inflate(R.layout.task_list_item, parent, false);
         }
         TextView taskLabelView = (TextView) convertView.findViewById(R.id.taskLabel);
+        TextView taskProduct = (TextView) convertView.findViewById(R.id.taskProduct);
         TextView taskEstimatedTimeView = (TextView) convertView.findViewById(R.id.taskEstimatedTime);
         Task task = sprintList.get(groupPosition).getTasks().get(childPosition);
         taskLabelView.setText(task.getLabel());
+        taskProduct.setText(task.getProduct());
         taskEstimatedTimeView.setText(task.getEstimatedTime());
         return convertView;
     }

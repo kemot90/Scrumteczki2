@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
+
 import java.io.File;
 
 import pl.kemot.scrum.scrumteczki2.ObservableSprintList;
@@ -17,6 +19,7 @@ import pl.kemot.scrum.scrumteczki2.adapter.SprintListAdapter;
 import pl.kemot.scrum.scrumteczki2.model.Sprint;
 import pl.kemot.scrum.scrumteczki2.persistence.ScrumFacade;
 import pl.kemot.scrum.scrumteczki2.service.ExcelTaskListReaderService;
+import pl.kemot.scrum.scrumteczki2.service.LoadSprintsFromFileTask;
 
 /**
  * Created by Tomek on 03.01.14.
@@ -54,10 +57,8 @@ public class SprintListActivity extends Activity {
                 Uri selectedFileUri = data.getData();
                 File excelFile = getFileFromUriIfExcel(selectedFileUri);
                 if (excelFile != null) {
-                    Toast.makeText(this, "Wybrano plik: " + excelFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
-                    Sprint sprint = ExcelTaskListReaderService.loadTasksFromExcelWorkbook(excelFile);
-                    scrumFacade.saveLoadedSprint(sprint);
-                    application.getObservableSprintList().addSprint(sprint);
+                    LoadSprintsFromFileTask loadSprintsFromFileTask = new LoadSprintsFromFileTask(this, selectedFileUri);
+                    loadSprintsFromFileTask.execute();
                 } else {
                     Toast wrongFile = Toast.makeText(this, "Wybrany plik nie jest plikiem arkusza Excel!", Toast.LENGTH_LONG);
                     wrongFile.show();
