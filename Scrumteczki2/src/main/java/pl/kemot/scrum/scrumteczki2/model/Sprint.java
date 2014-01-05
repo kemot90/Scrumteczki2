@@ -3,7 +3,6 @@ package pl.kemot.scrum.scrumteczki2.model;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Tomek on 29.12.13.

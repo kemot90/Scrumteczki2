@@ -3,8 +3,6 @@ package pl.kemot.scrum.scrumteczki2.persistence;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import pl.kemot.scrum.scrumteczki2.model.Sprint;
-
 /**
  * Created by Tomek on 30.12.13.
  */

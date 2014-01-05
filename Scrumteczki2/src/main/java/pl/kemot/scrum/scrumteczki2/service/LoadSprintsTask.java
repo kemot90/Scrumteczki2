@@ -7,7 +7,6 @@ import android.util.Log;
 import java.util.List;
 
 import pl.kemot.scrum.scrumteczki2.ScrumteczkiApp;
-import pl.kemot.scrum.scrumteczki2.adapter.SprintListAdapter;
 import pl.kemot.scrum.scrumteczki2.model.Sprint;
 import pl.kemot.scrum.scrumteczki2.persistence.ScrumFacade;
 

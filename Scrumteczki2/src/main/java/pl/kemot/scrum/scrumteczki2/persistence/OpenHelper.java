@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import javax.xml.datatype.DatatypeConstants;
-
 /**
  * Created by Tomek on 30.12.13.
  */

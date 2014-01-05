@@ -18,7 +18,6 @@ import pl.kemot.scrum.scrumteczki2.R;
 import pl.kemot.scrum.scrumteczki2.ScrumteczkiApp;
 import pl.kemot.scrum.scrumteczki2.model.Sprint;
 import pl.kemot.scrum.scrumteczki2.model.Task;
-import pl.kemot.scrum.scrumteczki2.service.LoadSprintsTask;
 
 /**
  * Created by Tomek on 03.01.14.
