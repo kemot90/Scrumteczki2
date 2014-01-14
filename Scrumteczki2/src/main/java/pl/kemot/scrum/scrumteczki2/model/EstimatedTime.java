@@ -7,8 +7,8 @@ import pl.kemot.scrum.scrumteczki2.utils.StringUtils;
  */
 public class EstimatedTime implements Comparable<EstimatedTime> {
     private short seconds = 0;
-    private short minutes = 0;
-    private short hours = 0;
+    private int minutes = 0;
+    private int hours = 0;
 
     /**
      * Utworzy obiekt wyestymowanego czasu dla zadanych wartości.
@@ -16,7 +16,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
      * @param minutes liczba minut z przedziału od 0 do 59
      * @param seconds liczba sekund z przedziału od 0 do 59
      */
-    public EstimatedTime(short hours, short minutes, short seconds) {
+    public EstimatedTime(int hours, int minutes, short seconds) {
         this.hours = hours;
         setMinutes(minutes);
         setSeconds(seconds);
@@ -60,7 +60,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
     /**
      * @return liczba minut dla estymowanego czasu
      */
-    public short getMinutes() {
+    public int getMinutes() {
         return minutes;
     }
 
@@ -68,7 +68,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
      * Ustawi liczbę minut dla estymowanego czasu. Liczba ta musi być z przedziału od 0 do 59.
      * @param minutes liczba minut
      */
-    public void setMinutes(short minutes) {
+    public void setMinutes(int minutes) {
         if (!isBetweenZeroAndFiftyNine(minutes)) {
             throw new IllegalArgumentException("Minuty musza miescic sie w przedziale od 0 do 59. Wartosc: " + minutes);
         }
@@ -78,7 +78,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
     /**
      * @return liczba godzin dla estymowanego czasu
      */
-    public short getHours() {
+    public int getHours() {
         return hours;
     }
 
@@ -86,7 +86,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
      * Ustawi liczbę godzin dla estymowanego czasu.
      * @param hours liczba godzin
      */
-    public void setHours(short hours) {
+    public void setHours(int hours) {
         this.hours = hours;
     }
 
@@ -95,7 +95,7 @@ public class EstimatedTime implements Comparable<EstimatedTime> {
      * @param value sprawdzana wartość
      * @return true jeżeli argument jest z przedziału od 0 do 59 w p.p. false
      */
-    private boolean isBetweenZeroAndFiftyNine(short value) {
+    private boolean isBetweenZeroAndFiftyNine(int value) {
         if (value < 60 && value > -1) {
             return true;
         }

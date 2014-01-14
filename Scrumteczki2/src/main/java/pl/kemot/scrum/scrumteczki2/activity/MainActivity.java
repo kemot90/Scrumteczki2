@@ -23,7 +23,12 @@ public class MainActivity extends Activity {
     }
 
     public void onClickStartSprintListActivity(View view) {
-        Intent estimateActivityIntent = new Intent(MainActivity.this, SprintListActivity.class);
-        startActivity(estimateActivityIntent);
+        Intent sprintListActivityIntent = new Intent(MainActivity.this, SprintListActivity.class);
+        startActivity(sprintListActivityIntent);
+    }
+
+    public void onClickStartDailyScrumListActivity(View view) {
+        Intent dailyScrumActivityIntent = new Intent(MainActivity.this, DailyScrumActivity.class);
+        startActivity(dailyScrumActivityIntent);
     }
 }

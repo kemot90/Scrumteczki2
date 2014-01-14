@@ -32,6 +32,7 @@ public class EstimateAdapter extends ArrayAdapter<Estimate> {
         return labelText;
     }
 
+    @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

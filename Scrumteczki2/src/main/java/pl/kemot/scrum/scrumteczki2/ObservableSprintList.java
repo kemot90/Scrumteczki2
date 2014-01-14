@@ -13,7 +13,7 @@ import pl.kemot.scrum.scrumteczki2.service.LoadSprintsTask;
  * Created by Tomek on 04.01.14.
  */
 public class ObservableSprintList implements Observable<Listener> {
-    private List<Listener> adapters = new LinkedList<>();
+    private final List<Listener> adapters = new LinkedList<>();
     private final LinkedList<Sprint> sprintList = new LinkedList<>();
 
     public ObservableSprintList(Context context) {

@@ -9,12 +9,13 @@ import android.content.Context;
 public class ScrumteczkiApp extends Application {
     private static Context context;
     private ObservableSprintList sprintList;
+    private ObservableChangesList changesList;
 
     public void onCreate(){
         super.onCreate();
         context = getApplicationContext();
         sprintList = new ObservableSprintList(this);
-
+        changesList = new ObservableChangesList(this);
     }
 
     /**
@@ -25,5 +26,8 @@ public class ScrumteczkiApp extends Application {
     }
     public ObservableSprintList getObservableSprintList() {
         return sprintList;
+    }
+    public ObservableChangesList getObservableChangesList() {
+        return changesList;
     }
 }

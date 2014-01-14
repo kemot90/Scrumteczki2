@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hours"
+        android:layout_toLeftOf="@+id/minutes"/>
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minutes"
+        android:layout_centerHorizontal="true"/>
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seconds"
+        android:layout_toRightOf="@+id/minutes"/>
+    <Button
+        android:id="@+id/zeroHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_alignLeft="@+id/hours"
+        android:layout_alignRight="@+id/hours"
+        android:layout_below="@+id/hours"
+        style="@style/mainScreenMenuButton"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/zeroMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_alignLeft="@+id/minutes"
+        android:layout_alignRight="@+id/minutes"
+        android:layout_below="@+id/minutes"
+        style="@style/mainScreenMenuButton"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/zeroAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wyzeruj wszystko"
+        android:layout_alignLeft="@+id/hours"
+        android:layout_alignRight="@+id/seconds"
+        android:layout_below="@+id/zeroHours"
+        style="@style/mainScreenMenuButton"
+        android:textSize="20sp"
+        android:gravity="center"/>
+</RelativeLayout>

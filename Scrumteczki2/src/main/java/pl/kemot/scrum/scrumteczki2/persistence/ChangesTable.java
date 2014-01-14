@@ -15,7 +15,7 @@ public class ChangesTable {
     public static void onCreate(SQLiteDatabase database) {
         StringBuilder createTableRequestBuilder = new StringBuilder();
         createTableRequestBuilder.append("CREATE TABLE " + ChangesTable.TABLE_NAME + " (");
-        createTableRequestBuilder.append(ChangesColumns.TASK_ID + " INTEGER NOT NULL, ");
+        createTableRequestBuilder.append(ChangesColumns.TASK_ID + " INTEGER NOT NULL UNIQUE, ");
         createTableRequestBuilder.append(ChangesColumns.NEW_ESTIMATED_TIME + " TEXT NOT NULL, ");
         createTableRequestBuilder.append("FOREIGN KEY (" + ChangesColumns.TASK_ID + ") REFERENCES ");
         createTableRequestBuilder.append(TaskTable.TABLE_NAME + "(" + BaseColumns._ID + ")");

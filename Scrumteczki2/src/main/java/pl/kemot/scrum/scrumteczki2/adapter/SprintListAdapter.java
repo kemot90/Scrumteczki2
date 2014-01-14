@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -16,6 +17,7 @@ import java.util.List;
 import pl.kemot.scrum.scrumteczki2.Listener;
 import pl.kemot.scrum.scrumteczki2.R;
 import pl.kemot.scrum.scrumteczki2.ScrumteczkiApp;
+import pl.kemot.scrum.scrumteczki2.model.Changes;
 import pl.kemot.scrum.scrumteczki2.model.Sprint;
 import pl.kemot.scrum.scrumteczki2.model.Task;
 
@@ -96,10 +98,19 @@ public class SprintListAdapter extends BaseExpandableListAdapter implements List
         TextView taskLabelView = (TextView) convertView.findViewById(R.id.taskLabel);
         TextView taskProduct = (TextView) convertView.findViewById(R.id.taskProduct);
         TextView taskEstimatedTimeView = (TextView) convertView.findViewById(R.id.taskEstimatedTime);
+        TextView newEstimatedTime = (TextView) convertView.findViewById(R.id.taskNewEstimatedTime);
         Task task = sprintList.get(groupPosition).getTasks().get(childPosition);
         taskLabelView.setText(task.getLabel());
         taskProduct.setText(task.getProduct());
         taskEstimatedTimeView.setText(task.getEstimatedTime());
+        Changes changes = application.getObservableChangesList().findChangesByTaskId(task.getId());
+        if (changes != null) {
+            newEstimatedTime.setVisibility(View.VISIBLE);
+            newEstimatedTime.setText(changes.getNewEstimatedTimeToCompleteTask());
+        } else {
+            newEstimatedTime.setVisibility(View.GONE);
+        }
+        convertView.setTag(task);
         return convertView;
     }
 

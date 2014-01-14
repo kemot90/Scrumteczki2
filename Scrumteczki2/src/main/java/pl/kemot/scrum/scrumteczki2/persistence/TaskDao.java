@@ -77,7 +77,8 @@ public class TaskDao implements Dao<Task> {
                         BaseColumns._ID,
                         TaskTable.TaskColumns.LABEL,
                         TaskTable.TaskColumns.PRODUCT,
-                        TaskTable.TaskColumns.ESTIMATED_TIME
+                        TaskTable.TaskColumns.ESTIMATED_TIME,
+                        TaskTable.TaskColumns.SPRINT_ID
                 },
                 BaseColumns._ID + " = ?",
                 new String[] {
@@ -104,7 +105,8 @@ public class TaskDao implements Dao<Task> {
                         BaseColumns._ID,
                         TaskTable.TaskColumns.LABEL,
                         TaskTable.TaskColumns.PRODUCT,
-                        TaskTable.TaskColumns.ESTIMATED_TIME
+                        TaskTable.TaskColumns.ESTIMATED_TIME,
+                        TaskTable.TaskColumns.SPRINT_ID
                 },
                 null,
                 null,
@@ -121,7 +123,8 @@ public class TaskDao implements Dao<Task> {
                         BaseColumns._ID,
                         TaskTable.TaskColumns.LABEL,
                         TaskTable.TaskColumns.PRODUCT,
-                        TaskTable.TaskColumns.ESTIMATED_TIME
+                        TaskTable.TaskColumns.ESTIMATED_TIME,
+                        TaskTable.TaskColumns.SPRINT_ID
                 },
                 TaskTable.TaskColumns.SPRINT_ID + " = ?",
                 new String[] {
@@ -160,6 +163,7 @@ public class TaskDao implements Dao<Task> {
             task.setLabel(cursor.getString(1));
             task.setProduct(cursor.getString(2));
             task.setEstimatedTime(cursor.getString(3));
+            task.setSprintId(cursor.getLong(4));
         }
         return task;
     }

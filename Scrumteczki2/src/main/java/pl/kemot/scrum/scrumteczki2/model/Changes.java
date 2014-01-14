@@ -3,7 +3,7 @@ package pl.kemot.scrum.scrumteczki2.model;
 /**
  * Created by Tomek on 29.12.13.
  */
-public class TimeToCompleteChange {
+public class Changes {
     private Task task;
     private String newEstimatedTimeToCompleteTask;
 
@@ -35,5 +35,20 @@ public class TimeToCompleteChange {
      */
     public void setNewEstimatedTimeToCompleteTask(String newEstimatedTimeToCompleteTask) {
         this.newEstimatedTimeToCompleteTask = newEstimatedTimeToCompleteTask;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Changes)) {
+            return false;
+        }
+        Changes changes = (Changes) o;
+        if (!changes.getTask().equals(getTask())) {
+            return false;
+        }
+        return true;
     }
 }

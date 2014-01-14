@@ -16,7 +16,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/dailyscrum"
-            android:text="@string/daily_scrum"
+            android:text="@string/plan_daily_scrum"
             android:onClick="onClickStartSprintListActivity"
             style="@style/mainScreenMenuButton"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/sun"
+        android:text="@string/daily_scrum"
+        android:onClick="onClickStartDailyScrumListActivity"
+        style="@style/mainScreenMenuButton"/>
 </LinearLayout>

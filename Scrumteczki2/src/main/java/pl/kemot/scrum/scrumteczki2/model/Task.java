@@ -78,4 +78,19 @@ public class Task extends BaseEntity {
         result = prime * result + ((this.estimatedTime == null) ? 0 : this.estimatedTime.hashCode());
         return result;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Task)) {
+            return false;
+        }
+        Task task = (Task) obj;
+        if (this.getLabel() != task.getLabel()) {
+            return false;
+        }
+        return true;
+    }
 }
