@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -102,85 +104,5 @@ public class SprintListActivity extends Activity implements ExpandableListView.O
         return true;
     }
 
-    private class TaskEstimateDialogFragment extends DialogFragment {
-        private NumberPicker hoursPicker;
-        private NumberPicker minutesPicker;
-        private NumberPicker secondsPicker;
-        private final View callingView;
-        private Task task;
-        private EstimatedTime estimatedTime;
-        public TaskEstimateDialogFragment(View callingView) {
-            this.callingView = callingView;
-            task = (Task) callingView.getTag();
-            if (application.getObservableChangesList().containsTask(task)) {
-                Changes changes = application.getObservableChangesList().getChangesByTask(task);
-                String estimetedTimeAsString = changes.getNewEstimatedTimeToCompleteTask();
-                estimatedTime = new EstimatedTime(estimetedTimeAsString);
-            } else {
-                estimatedTime = new EstimatedTime(task.getEstimatedTime());
-            }
-        }
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SprintListActivity.this);
-            View estimateChangerLayout = inflater.inflate(R.layout.estimate_changer, null);
-
-            hoursPicker = (NumberPicker) estimateChangerLayout.findViewById(R.id.hours);
-            minutesPicker = (NumberPicker) estimateChangerLayout.findViewById(R.id.minutes);
-            secondsPicker = (NumberPicker) estimateChangerLayout.findViewById(R.id.seconds);
-            Button zeroHoursButton = (Button) estimateChangerLayout.findViewById(R.id.zeroHours);
-            Button zeroMinutesButton = (Button) estimateChangerLayout.findViewById(R.id.zeroMinutes);
-            Button zeroAllButton = (Button) estimateChangerLayout.findViewById(R.id.zeroAll);
-            zeroHoursButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    hoursPicker.setValue(0);
-                }
-            });
-            zeroMinutesButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    minutesPicker.setValue(0);
-                }
-            });
-            zeroAllButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    hoursPicker.setValue(0);
-                    minutesPicker.setValue(0);
-                }
-            });
-            initPicker(hoursPicker, 1200, estimatedTime.getHours());
-            initPicker(minutesPicker, 59, estimatedTime.getMinutes());
-            initPicker(secondsPicker, 0, 0);
-            return dialogBuilder
-                    .setView(estimateChangerLayout)
-                    .setPositiveButton("Zapisz", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            EstimatedTime estimatedTime = new EstimatedTime(
-                                    hoursPicker.getValue(),
-                                    minutesPicker.getValue(),
-                                    (short) 0);
-                            scrumFacade.addToDailyScrum(task, estimatedTime);
-                        }
-                    })
-                    .setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    })
-                    .create();
-        }
-
-        private void initPicker(NumberPicker picker, int maxValue, int currentValue) {
-            picker.setMinValue(0);
-            picker.setMaxValue(maxValue);
-            picker.setValue(currentValue);
-            picker.setWrapSelectorWheel(false);
-        }
-    }
 }

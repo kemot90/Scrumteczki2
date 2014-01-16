@@ -24,18 +24,21 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <ImageButton
                 android:id="@+id/smile"
-                android:text="@string/smiley"
+                android:gravity="center"
+                android:src="@drawable/smiley_button"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:onClick="onClickStartBreakActivity" />
             <Button
                 android:id="@+id/unknow"
                 android:text="\?"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="onClickStartUnknownEstimateActivity" />
         </TableRow>
     </TableLayout>
     <TextView
@@ -48,8 +51,6 @@
         android:layout_weight="1" />
     <TextView
         android:id="@+id/pessimistic"
-
-
         android:text="..."
         style="@style/bigChitText"
         android:background="@drawable/karteczka"

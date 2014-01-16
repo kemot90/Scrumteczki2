@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Spinner
+            android:id="@+id/estimateLeft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"/>
+        <Spinner
+            android:id="@+id/estimateRight"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/estimateLeft"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/smile"
+                android:gravity="center"
+                android:src="@drawable/smiley_button"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:onClick="onClickStartBreakActivity" />
+            <Button
+                android:id="@+id/unknow"
+                android:text="\?"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:onClick="onClickStartUnknownEstimateActivity" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/optimistic"
+            android:text="..."
+            style="@style/bigChitText"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/karteczka"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+        <TextView
+            android:id="@+id/pessimistic"
+            android:text="..."
+            style="@style/bigChitText"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/karteczka"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

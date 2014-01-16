@@ -1,6 +1,7 @@
 package pl.kemot.scrum.scrumteczki2.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -36,6 +37,16 @@ public class EstimateActivity extends Activity {
 
         leftEstimate.setOnItemSelectedListener(getSelectEvent());
         rightEstimate.setOnItemSelectedListener(getSelectEvent());
+    }
+
+    public void onClickStartBreakActivity(View view) {
+        Intent breakActivityIntent = new Intent(EstimateActivity.this, BreakActivity.class);
+        startActivity(breakActivityIntent);
+    }
+
+    public void onClickStartUnknownEstimateActivity(View view) {
+        Intent breakActivityIntent = new Intent(EstimateActivity.this, UnknownEstimateActivity.class);
+        startActivity(breakActivityIntent);
     }
 
     @Override

@@ -1,9 +1,11 @@
 package pl.kemot.scrum.scrumteczki2.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Tomek on 22.11.13.
  */
-public class Task extends BaseEntity {
+public class Task extends BaseEntity implements Serializable {
     private String label;
     private String product;
     private String estimatedTime;

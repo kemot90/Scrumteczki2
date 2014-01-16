@@ -26,6 +26,8 @@
         <activity android:name=".activity.EstimateActivity" />
         <activity android:name=".activity.SprintListActivity" />
         <activity android:name=".activity.DailyScrumActivity" />
+        <activity android:name=".activity.BreakActivity" />
+        <activity android:name=".activity.UnknownEstimateActivity" />
     </application>
 
 </manifest>

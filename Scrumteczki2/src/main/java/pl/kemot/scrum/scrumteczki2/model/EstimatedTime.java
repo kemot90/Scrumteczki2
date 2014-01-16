@@ -1,11 +1,13 @@
 package pl.kemot.scrum.scrumteczki2.model;
 
+import java.io.Serializable;
+
 import pl.kemot.scrum.scrumteczki2.utils.StringUtils;
 
 /**
  * Created by Tomek on 22.11.13.
  */
-public class EstimatedTime implements Comparable<EstimatedTime> {
+public class EstimatedTime implements Comparable<EstimatedTime>, Serializable {
     private short seconds = 0;
     private int minutes = 0;
     private int hours = 0;
