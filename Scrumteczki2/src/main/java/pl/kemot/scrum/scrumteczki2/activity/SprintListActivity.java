@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -85,7 +86,15 @@ public class SprintListActivity extends Activity implements ExpandableListView.O
     public void onClickSelectFile(View view) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("file/*");
-        startActivityForResult(intent, SELECT_EXCEL_FILE);
+        try {
+            startActivityForResult(intent, SELECT_EXCEL_FILE);
+        } catch (ActivityNotFoundException ex) {
+            Toast.makeText(
+                    this,
+                    "Na urządzeniu nie znaleziono żadnego menedżera plików pozwalającego wykonać tę operację!",
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
     private File getFileFromUriIfExcel(Uri uri) {
