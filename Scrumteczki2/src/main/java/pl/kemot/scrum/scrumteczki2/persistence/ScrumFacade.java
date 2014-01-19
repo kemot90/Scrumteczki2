@@ -3,10 +3,12 @@ package pl.kemot.scrum.scrumteczki2.persistence;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.List;
 
+import pl.kemot.scrum.scrumteczki2.ObservableChangesList;
 import pl.kemot.scrum.scrumteczki2.ScrumteczkiApp;
 import pl.kemot.scrum.scrumteczki2.model.Changes;
 import pl.kemot.scrum.scrumteczki2.model.EstimatedTime;
@@ -118,5 +120,23 @@ public class ScrumFacade {
             changesDao.delete(changes);
         }
         application.getObservableChangesList().clear();
+    }
+
+    public void deleteSprint(Sprint sprint) {
+        List<Sprint> sprintList = application.getObservableSprintList().getSprintList();
+        int indexOfSprint = sprintList.indexOf(sprint);
+        sprintList.remove(indexOfSprint);
+        sprintDao.delete(sprint);
+        List<Task> taskList = sprint.getTasks();
+        ObservableChangesList changesObservableList = application.getObservableChangesList();
+        for (Task task : taskList) {
+            taskDao.delete(task);
+            if (changesObservableList.containsTask(task)) {
+                Changes changes = changesObservableList.getChangesByTask(task);
+                removeChanges(changes);
+            }
+        }
+        application.getObservableSprintList().notifyListeners();
+        Toast.makeText(context, "Usunięto Sprint " + sprint.getName(), Toast.LENGTH_LONG).show();
     }
 }

@@ -55,6 +55,7 @@ public class DailyScrumActivity extends Activity {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(DailyScrumActivity.this);
+            setRetainInstance(true);
             return dialogBuilder
                     .setTitle("Potwierdzenie")
                     .setMessage("Czy jesteś pewien, że chcesz zastosować zmiany w estymowanych czasach zadań?")
