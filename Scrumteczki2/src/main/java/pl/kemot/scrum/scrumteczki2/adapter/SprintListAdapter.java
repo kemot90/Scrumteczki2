@@ -122,6 +122,7 @@ public class SprintListAdapter extends BaseExpandableListAdapter implements List
         TextView taskProduct = (TextView) convertView.findViewById(R.id.taskProduct);
         TextView taskEstimatedTimeView = (TextView) convertView.findViewById(R.id.taskEstimatedTime);
         TextView newEstimatedTime = (TextView) convertView.findViewById(R.id.taskNewEstimatedTime);
+        ImageButton restore = (ImageButton) convertView.findViewById(R.id.restore);
         Task task = sprintList.get(groupPosition).getTasks().get(childPosition);
         taskLabelView.setText(task.getLabel());
         taskProduct.setText(task.getProduct());
@@ -130,8 +131,19 @@ public class SprintListAdapter extends BaseExpandableListAdapter implements List
         if (changes != null) {
             newEstimatedTime.setVisibility(View.VISIBLE);
             newEstimatedTime.setText(changes.getNewEstimatedTimeToCompleteTask());
+            restore.setVisibility(View.VISIBLE);
+            restore.setFocusable(false);
+            restore.setTag(changes);
+            restore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Changes changesToRemove = (Changes) view.getTag();
+                    scrumFacade.removeChanges(changesToRemove);
+                }
+            });
         } else {
             newEstimatedTime.setVisibility(View.GONE);
+            restore.setVisibility(View.GONE);
         }
         convertView.setTag(task);
         return convertView;

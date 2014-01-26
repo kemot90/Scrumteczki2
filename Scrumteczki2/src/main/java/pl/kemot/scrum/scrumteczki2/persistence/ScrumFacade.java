@@ -105,7 +105,7 @@ public class ScrumFacade {
         return true;
     }
 
-    private void removeChanges(Changes changes) {
+    public void removeChanges(Changes changes) {
         application.getObservableChangesList().removeChanges(changes);
         changesDao.delete(changes);
         application.getObservableSprintList().notifyListeners();

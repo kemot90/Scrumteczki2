@@ -26,11 +26,12 @@
             android:layout_height="wrap_content">
             <ImageButton
                 android:id="@+id/smile"
-                android:gravity="center"
                 android:src="@drawable/smiley_button"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                style="@style/mainScreenMenuButton"
+                android:gravity="center"
                 android:onClick="onClickStartBreakActivity" />
             <Button
                 android:id="@+id/unknow"
@@ -38,6 +39,8 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/mainScreenMenuButton"
+                android:gravity="center"
                 android:onClick="onClickStartUnknownEstimateActivity" />
         </TableRow>
     </TableLayout>

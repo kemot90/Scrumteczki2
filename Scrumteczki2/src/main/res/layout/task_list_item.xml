@@ -37,5 +37,15 @@
                 android:textStyle="bold"
                 android:text="0:00:00"
                 android:textColor="#690" />
+            <ImageButton
+                android:id="@+id/restore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:src="@drawable/restore"
+                style="@style/simpleButton"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                />
         </LinearLayout>
 </LinearLayout>
