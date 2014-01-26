@@ -47,6 +47,28 @@
         <item name="android:padding">10dip</item>
         <item name="android:layout_marginBottom">10dp</item>
     </style>
+    <style name="simpleButton" parent="@android:style/Widget.Button">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#333</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/button_simple</item>
+        <item name="android:drawablePadding">15dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="simpleButtonLeft" parent="simpleButton">
+        <item name="android:background">@drawable/button_simple_round_left</item>
+    </style>
+    <style name="simpleButtonRight" parent="simpleButton">
+        <item name="android:background">@drawable/button_simple_round_right</item>
+    </style>
+    <style name="simpleButtonCenter" parent="simpleButton">
+        <item name="android:background">@drawable/button_simple_center</item>
+    </style>
     <style name="smallLabel" parent="android:Widget.TextView">
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>

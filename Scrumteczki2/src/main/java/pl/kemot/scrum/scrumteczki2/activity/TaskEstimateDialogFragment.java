@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
 import pl.kemot.scrum.scrumteczki2.R;
@@ -89,9 +91,13 @@ public class TaskEstimateDialogFragment extends DialogFragment {
         hoursPicker = (NumberPicker) estimateChangerLayout.findViewById(R.id.hours);
         minutesPicker = (NumberPicker) estimateChangerLayout.findViewById(R.id.minutes);
         secondsPicker = (NumberPicker) estimateChangerLayout.findViewById(R.id.seconds);
+        hoursPicker.setWrapSelectorWheel(false);
+        minutesPicker.setWrapSelectorWheel(false);
+        secondsPicker.setWrapSelectorWheel(false);
+        hoursPicker.setOrientation(LinearLayout.VERTICAL);
         Button zeroHoursButton = (Button) estimateChangerLayout.findViewById(R.id.zeroHours);
         Button zeroMinutesButton = (Button) estimateChangerLayout.findViewById(R.id.zeroMinutes);
-        Button zeroAllButton = (Button) estimateChangerLayout.findViewById(R.id.zeroAll);
+        ImageButton zeroAllButton = (ImageButton) estimateChangerLayout.findViewById(R.id.zeroAll);
         zeroHoursButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
