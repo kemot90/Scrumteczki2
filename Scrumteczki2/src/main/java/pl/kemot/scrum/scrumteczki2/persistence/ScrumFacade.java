@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import pl.kemot.scrum.scrumteczki2.ObservableChangesList;
+import pl.kemot.scrum.scrumteczki2.ObservableSprintList;
 import pl.kemot.scrum.scrumteczki2.ScrumteczkiApp;
 import pl.kemot.scrum.scrumteczki2.model.Changes;
 import pl.kemot.scrum.scrumteczki2.model.EstimatedTime;
@@ -113,13 +114,19 @@ public class ScrumFacade {
 
     public void mergeChanges() {
         List<Changes> changesList = application.getObservableChangesList().getChangesList();
+        ObservableSprintList obervableSprintList = application.getObservableSprintList();
         for (Changes changes : changesList) {
             Task changedTask = changes.getTask();
+            Task taskOnSprintList = obervableSprintList.getTaskByLabel(changedTask.getLabel());
             changedTask.setEstimatedTime(changes.getNewEstimatedTimeToCompleteTask());
+            if (taskOnSprintList != null) {
+                taskOnSprintList.setEstimatedTime(changes.getNewEstimatedTimeToCompleteTask());
+            }
             taskDao.update(changedTask);
             changesDao.delete(changes);
         }
         application.getObservableChangesList().clear();
+        application.getObservableSprintList().notifyListeners();
     }
 
     public void deleteSprint(Sprint sprint) {
