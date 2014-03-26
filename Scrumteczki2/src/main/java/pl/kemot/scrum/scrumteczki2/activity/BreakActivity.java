@@ -1,10 +1,10 @@
 package pl.kemot.scrum.scrumteczki2.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 
 import pl.kemot.scrum.scrumteczki2.R;
 
@@ -17,6 +17,7 @@ public class BreakActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.break_estimate);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     public void onClickBackToEstimate(View view) {
         onBackPressed();

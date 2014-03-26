@@ -1,6 +1,7 @@
 package pl.kemot.scrum.scrumteczki2.service;
 
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -50,11 +51,13 @@ public class ExcelTaskListReaderService {
             sprint.setName(workbookFile.getName());
             HSSFSheet firstSheet = workbook.getSheetAt(0);
 
-            int numberOfRows = firstSheet.getPhysicalNumberOfRows();
+            int numberOfRows = firstSheet.getLastRowNum();
             for (int i = INDEX_OF_FIRST_ROW; i < numberOfRows; i++) {
+                Log.d("pl.kemot.scrum", "Row index: " + i + "/" + numberOfRows);
                 HSSFCell estimate = firstSheet.getRow(i).getCell(SprintExcelCols.ESTIMATE.getColumnNumber());
                 Task task = new Task();
                 String taskLabel = firstSheet.getRow(i).getCell(SprintExcelCols.ID.getColumnNumber()).getStringCellValue();
+                Log.d("pl.kemot.scrum", "Task label: " + taskLabel);
                 task.setLabel(taskLabel);
                 String taskProduct = firstSheet.getRow(i).getCell(SprintExcelCols.PRODUCT.getColumnNumber()).getStringCellValue();
                 task.setProduct(taskProduct);
